@@ -1,0 +1,40 @@
+<header class="bg-white shadow-md">
+    <nav>
+        <div class="flex justify-between items-center p-4">
+            <!-- Logo -->
+            <a href=""><img src="/assets/Logo_au_petit_village.png" alt="Logo de la boutique, un casque Gaulois" class="h-40 w-auto"></a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden sm:flex space-x-10 items-center">
+                <a href="#" class="hover:text-black/60 text-3xl" aria-current="page">Accueil</a>
+                <a href="#" class="hover:text-black/60 text-3xl">À propos</a>
+                <a href="#" class="hover:text-black/60 text-3xl">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button type="button" class="sm:hidden size-15 relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-dark focus:ring-2 focus:ring-dark focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen">
+                <span class="absolute -inset-0.5"></span>
+                <svg [ngClass]="{'block': !isMenuOpen, 'hidden': isMenuOpen}" class="size-15" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <!--
+                    Icon when menu is open.
+        
+                    Menu open: "block", Menu closed: "hidden"
+                -->
+                <svg [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="size-15" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by Default) -->
+        <div class="sm:hidden" id="mobile-menu" [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}">
+            <div class="space-y-5 px-5 pt-2 pb-3">
+              <a href="#" class="block text-2xl" aria-current="page">Accueil</a>
+              <a href="#" class="block text-2xl">À propos</a>
+              <a href="#" class="block text-2xl">Contact</a>
+            </div>
+          </div>
+    </nav>
+</header>
