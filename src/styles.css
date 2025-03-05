@@ -8,15 +8,21 @@
 
 @font-face {
     font-family: "Bubbleboddy Neue";
-    src: url("/assets/fonts/bubbleboddyneue-Bold-trial.woff") format('woff');
+    src: url("/assets/fonts/BubbleboddyNeue-Bold-Trial.woff") format('woff');
     font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Comfortaa';
+    color: #DA001E;
 }
 
 body{
     background-color: #F9D0A3;
     font-family: "Bubbleboddy Neue", sans-serif;
+    color: #151217;
+}
+
+.font-numbers {
+    font-family: sans-serif;
 }

@@ -1,0 +1,13 @@
+.buy-button {
+    background-color: #FDD90B;
+}
+
+.buy-button:hover{
+    background-color: #DA001E;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.outStock {
+    color: #DA001E;
+}

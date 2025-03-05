@@ -6,6 +6,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ```bash
 npm install tailwindcss @tailwindcss/postcss postcss --force
+npm install normalize-text --save
 ```
 
 Inside .postcssrc.json
