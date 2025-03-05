@@ -1,0 +1,40 @@
+<main class="py-25">
+    <section class="text-center text-3xl my-10">
+        <h1>Qui sommes-nous ?</h1>
+        <p>Nous proposons la vente de figurines faites main, inspirées d'Astérix et Obélix !</p>
+    </section>
+
+    <section class="container mx-auto px-10">
+        <h1 class="text-3xl font-bold mb-10 text-center">Catalogue des produits</h1>
+      
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher..." class="mt-2 p-2 border rounded w-full"/>
+
+
+        <label class="text-sm mx-5">Tier par prix :</label>
+        <select [(ngModel)]="sortOrder" class="mt-2 p-2 border rounded mb-10">
+          <option value="">Aucun filtre</option>
+          <option value="croissant">Prix croissant</option>
+          <option value="decroissant">Prix décroissant</option>
+        </select>
+
+        <div *ngIf="products.length > 0; else loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div *ngFor="let product of products | filterByName: searchQuery | sortByPrice: sortOrder" class="bg-white shadow-lg p-4 rounded-lg flex flex-col h-full">
+            <img [src]="product.imageUrl" [alt]="product.name" class="w-full h-auto object-cover rounded-md">
+            <h2 class="text-lg text-center mt-5">{{ product.name }}</h2>
+            <p class="mt-5 flex-grow flex items-center">{{ product.description }}</p>
+            <p class="text-xl font-bold mt-10 font-numbers text-center mb-5">{{ product.price }} €</p>
+            <button *ngIf="product.inStock; else outOfStock" class="mt-auto px-4 py-2 mx-auto rounded buy-button">
+              Consulter
+            </button>
+          </div>
+        </div>
+      
+        <ng-template #loading>
+          <p class="text-center text-gray-600">Loading products...</p>
+        </ng-template>
+
+        <ng-template #outOfStock>
+            <p class="text-center text-3xl block mt-auto outStock">Rupture de stock !</p>
+          </ng-template>
+    </section>
+</main>
