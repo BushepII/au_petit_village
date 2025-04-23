@@ -1,9 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductService, Product } from '../../services/product.service';
 import { SortByPricePipe } from '../../pipes/sort-by-price.pipe';
 import { FilterByNamePipe } from '../../pipes/filter-by-name.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,8 @@ import { FilterByNamePipe } from '../../pipes/filter-by-name.pipe';
 export class HomeComponent {
 
   private productService = inject(ProductService);
+  private router = inject(Router);
+
   products: Product[] = [];
   sortOrder: string = '';
   searchQuery: string = '';
@@ -28,4 +31,7 @@ export class HomeComponent {
     });
   }
 
+  goToProduct(id: number){
+    this.router.navigate(['/product', id]);
+  }
 }
