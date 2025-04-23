@@ -1,4 +1,4 @@
-<main class="py-25">
+<div class="py-25">
     <section class="text-center text-3xl my-10">
         <h1>Qui sommes-nous ?</h1>
         <p>Nous proposons la vente de figurines faites main, inspirées d'Astérix et Obélix !</p>
@@ -23,7 +23,7 @@
             <h2 class="text-lg text-center mt-5">{{ product.name }}</h2>
             <p class="mt-5 flex-grow flex items-center">{{ product.description }}</p>
             <p class="text-xl font-bold mt-10 font-numbers text-center mb-5">{{ product.price }} €</p>
-            <button *ngIf="product.inStock; else outOfStock" class="mt-auto px-4 py-2 mx-auto rounded buy-button">
+            <button *ngIf="product.inStock; else outOfStock" (click)="goToProduct(product.id)" routerLinkActive="router-link-active"  class="mt-auto px-4 py-2 mx-auto rounded buy-button">
               Consulter
             </button>
           </div>
@@ -37,4 +37,4 @@
             <p class="text-center text-3xl block mt-auto outStock">Rupture de stock !</p>
           </ng-template>
     </section>
-</main>
+  </div>
