@@ -1,40 +1,56 @@
 <div class="py-25">
-    <section class="text-center text-3xl my-10">
-        <h1>Qui sommes-nous ?</h1>
-        <p>Nous proposons la vente de figurines faites main, inspirées d'Astérix et Obélix !</p>
-    </section>
+  <section class="text-center text-3xl my-10">
+    <h1>Qui sommes-nous ?</h1>
+    <p>Nous proposons la vente de figurines faites main, inspirées d'Astérix et Obélix !</p>
+  </section>
 
-    <section class="container mx-auto px-10">
-        <h1 class="text-3xl font-bold mb-10 text-center">Catalogue des produits</h1>
-      
-        <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher..." class="mt-2 p-2 border rounded w-full"/>
+  <section class="container mx-auto px-10 my-10">
+    <h1 class="text-3xl font-bold mb-10 text-center">Catalogue des produits</h1>
+  
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Rechercher..." class="mt-2 p-2 border rounded w-full"/>
 
 
-        <label class="text-sm mx-5">Tier par prix :</label>
-        <select [(ngModel)]="sortOrder" class="mt-2 p-2 border rounded mb-10">
-          <option value="">Aucun filtre</option>
-          <option value="croissant">Prix croissant</option>
-          <option value="decroissant">Prix décroissant</option>
-        </select>
+    <label class="text-sm mx-5">Trier par prix :</label>
+    <select [(ngModel)]="sortOrder" class="mt-2 p-2 border rounded mb-10">
+      <option value="">Aucun filtre</option>
+      <option value="croissant">Prix croissant</option>
+      <option value="decroissant">Prix décroissant</option>
+    </select>
 
-        <div *ngIf="products.length > 0; else loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <div *ngFor="let product of products | filterByName: searchQuery | sortByPrice: sortOrder" class="bg-white shadow-lg p-4 rounded-lg flex flex-col h-full">
-            <img [src]="product.imageUrl" [alt]="product.name" class="w-full h-auto object-cover rounded-md">
-            <h2 class="text-lg text-center mt-5">{{ product.name }}</h2>
-            <p class="mt-5 flex-grow flex items-center">{{ product.description }}</p>
-            <p class="text-xl font-bold mt-10 font-numbers text-center mb-5">{{ product.price }} €</p>
-            <button *ngIf="product.inStock; else outOfStock" (click)="goToProduct(product.id)" routerLinkActive="router-link-active"  class="mt-auto px-4 py-2 mx-auto rounded buy-button">
-              Consulter
-            </button>
-          </div>
-        </div>
-      
-        <ng-template #loading>
-          <p class="text-center text-gray-600">Loading products...</p>
-        </ng-template>
+    <div *ngIf="products.length > 0; else loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div *ngFor="let product of products | filterByName: searchQuery | sortByPrice: sortOrder" class="bg-white shadow-lg p-4 rounded-lg flex flex-col h-full">
+        <img [src]="product.imageUrl" [alt]="product.name" class="w-full h-auto object-cover rounded-md">
+        <h2 class="text-lg text-center mt-5">{{ product.name }}</h2>
+        <p class="mt-5 flex-grow flex items-center">{{ product.description }}</p>
+        <p class="text-xl font-bold mt-10 font-numbers text-center mb-5">{{ product.price }} €</p>
+        <button *ngIf="product.inStock; else outOfStock" (click)="goToProduct(product.id)" routerLinkActive="router-link-active"  class="mt-auto px-4 py-2 mx-auto rounded buy-button">
+          Consulter
+        </button>
+      </div>
+    </div>
+    
+    <ng-template #loading>
+      <p class="text-center text-gray-600">Loading products...</p>
+    </ng-template>
 
-        <ng-template #outOfStock>
-            <p class="text-center text-3xl block mt-auto outStock">Rupture de stock !</p>
-          </ng-template>
-    </section>
-  </div>
+    <ng-template #outOfStock>
+      <p class="text-center text-3xl block mt-auto outStock">Rupture de stock !</p>
+    </ng-template>
+  </section>
+
+  <section class="mx-auto px-10">
+    <h1 class="text-3xl font-bold mb-10 text-center">Nous contacter</h1>
+    <form class="bg-white shadow-lg p-4 rounded-lg flex flex-col justify-evenly px-20 gap-y-8 py-8">
+      <div class="flex flex-col gap-y-10 lg:flex-row lg:gap-x-10">
+        <input type="text" name="name" required placeholder="Nom" class="border rounded p-2">
+        <input type="text" name="firstname" required placeholder="Prénom" class="border rounded p-2">
+      </div>
+      <input type="text" name="subject" required placeholder="Objet" class="border rounded p-2 lg:w-4/5">
+      <textarea name="message" required placeholder="Votre message..." rows="5" class="border rounded p-2 lg:w-4/5"></textarea>
+
+      <button type="submit" class="rounded px-4 py-2 hover:opacity-50 mx-auto mt-auto hover:cursor-pointer">
+        Envoyer
+      </button>
+    </form>
+  </section>
+</div>
