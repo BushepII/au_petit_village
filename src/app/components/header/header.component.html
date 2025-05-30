@@ -2,12 +2,12 @@
     <nav>
         <div class="flex justify-between items-center p-4">
             <!-- Logo -->
-            <a href=""><img src="/assets/images/Logo_au_petit_village.png" alt="Logo de la boutique, un casque Gaulois" class="h-20 w-auto"></a>
+            <a [routerLink]="['']"><img src="/assets/images/Logo_au_petit_village.png" alt="Logo de la boutique, un casque Gaulois" class="h-20 w-auto"></a>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-10 items-center">
-                <a href="#" class="hover:text-black/60 text-2xl" aria-current="page">Accueil</a>
-                <a href="#" class="hover:text-black/60 text-2xl">À propos</a>
+                <a [routerLink]="['']" class="hover:text-black/60 text-2xl" aria-current="page">Accueil</a>
+                <a [routerLink]="['/about']" class="hover:text-black/60 text-2xl">À propos</a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -30,8 +30,8 @@
         <!-- Mobile Menu (Hidden by Default) -->
         <div class="md:hidden" id="mobile-menu" [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}">
             <div class="space-y-5 px-5 pt-2 pb-3">
-              <a href="#" class="block text-2xl" aria-current="page">Accueil</a>
-              <a href="#" class="block text-2xl">À propos</a>
+              <a [routerLink]="['']" class="block text-2xl" aria-current="page">Accueil</a>
+              <a [routerLink]="['/about']" class="block text-2xl">À propos</a>
             </div>
           </div>
     </nav>

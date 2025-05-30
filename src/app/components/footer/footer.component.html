@@ -8,9 +8,8 @@
         </section>
         <section class="p-4 flex-1 flex flex-col md:text-center">
             <h1 class="mb-4">Liens utiles</h1>
-            <a href="">Accueil</a>
-            <a href="">À propos</a>
-            <a href="">Contact</a>
+            <a [routerLink]="['']" routerLinkActive="router-link-active" >Accueil</a>
+            <a [routerLink]="['/about']">À propos</a>
         </section>
         <section class="p-4 flex-1 md:text-center">
             <h1 class="mb-4">Réseaux sociaux</h1>
