@@ -7,7 +7,22 @@ import { ErrorpageComponent } from './components/errorpage/errorpage.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent},
-    { path: 'product/:id', component: ProductComponent},
+    { path: 'product/:id',
+        component: ProductComponent,
+        data: {
+            renderMode: 'pre-render',
+            getPrerenderParams: () => {
+                return [
+                { id: '1' },
+                { id: '2' },
+                { id: '3' },
+                { id: '4' },
+                { id: '5' },
+                { id: '6' },
+                ];
+            }
+        }
+    },
     { path: 'about', component: AboutComponent},
     { path: '**', component: ErrorpageComponent}
 ];
