@@ -26,3 +26,7 @@ body{
 .font-numbers {
     font-family: sans-serif;
 }
+
+a:hover {
+    opacity: 0.6;
+}
