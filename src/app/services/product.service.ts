@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 export interface Product {
   id: number;
@@ -22,5 +22,11 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.jsonUrl);
+  }
+
+  getIds(): Observable<string[]> {
+    return this.getProducts().pipe(
+      map(products => products.map(product => product.id.toString()))
+    );
   }
 }
